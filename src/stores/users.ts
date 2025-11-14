@@ -96,9 +96,11 @@ export const useUsersStore = defineStore('users', () => {
     try {
       await api.ingest(
         mutations.map((m) => ({
-          table: 'users',
-          operation: 'insert',
-          row: { pub_key: m.pub_key, name: m.name },
+          type: 'insert',
+          modified: { pub_key: m.pub_key, name: m.name },
+          syncMetadata: {
+            relation: 'users',
+          },
         })),
       )
 
