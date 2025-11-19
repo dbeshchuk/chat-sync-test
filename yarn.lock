@@ -253,6 +253,42 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.28.5"
 
+"@electric-sql/client@^1.0.9", "@electric-sql/client@^1.1.0", "@electric-sql/client@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@electric-sql/client/-/client-1.1.4.tgz#afecc2f62afa4e2e3998a0eae036867f4f7a17f1"
+  integrity sha512-88M2iEg5LYSE388wNWjrQMpsIgLzwge60cCN5znQSDEnUEprJZ13vB3r+S8IRNYbmOtUSNVEODuXn+nlqEhEGw==
+  dependencies:
+    "@microsoft/fetch-event-source" "^2.0.1"
+  optionalDependencies:
+    "@rollup/rollup-darwin-arm64" "^4.18.1"
+
+"@electric-sql/experimental@^1.0.9":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@electric-sql/experimental/-/experimental-1.0.14.tgz#d7de853b7d373794263a37049b58bc212e8889c7"
+  integrity sha512-Wpv9UC7r4JYnQO4GbtQve7SVIX/VcBwAP12Xx11ObK2TBI+NJHtDRimUEKKQorq9Kr6yTAJ3BYOKCINxFsbDIg==
+  optionalDependencies:
+    "@rollup/rollup-darwin-arm64" "^4.18.1"
+
+"@electric-sql/pglite-sync@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@electric-sql/pglite-sync/-/pglite-sync-0.4.0.tgz#37b9accc99e1622934a624c0f85cedd972c9ddac"
+  integrity sha512-0JUBXs7jK2monIrtvfSO7LmiKCyYfi+hQ+7EvVVNei0R7yeyRiSaywkk6yYtJZpTTRFKoByjpHwIc3fbXfgZSA==
+  dependencies:
+    "@electric-sql/client" "^1.0.9"
+    "@electric-sql/experimental" "^1.0.9"
+
+"@electric-sql/pglite-vue@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@electric-sql/pglite-vue/-/pglite-vue-0.2.32.tgz#20db2c8886be63928d3eeff6707fc23143c0955d"
+  integrity sha512-egw8Pk1Sg7A5G/lUIQjAyYPkdZWcSU4qWlwnw27KWhn7ussa4YA721YbM0+j97+FfVJ7vhwhIL+8SBfsY1nHtw==
+  dependencies:
+    vue-demi "^0.14.10"
+
+"@electric-sql/pglite@^0.3.14":
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/@electric-sql/pglite/-/pglite-0.3.14.tgz#ea464c0bc52435ceba710d3ebd33917e91d893cf"
+  integrity sha512-3DB258dhqdsArOI1fIt7cb9RpUOgcDg5hXWVgVHAeqVQ/qxtFy605QKs4gx6mFq3jWsSPqDN8TgSEsqC3OfV9Q==
+
 "@emnapi/core@^1.5.0", "@emnapi/core@^1.6.0":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.7.0.tgz#135de4e8858763989112281bdf38ca02439db7c3"
@@ -537,6 +573,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@microsoft/fetch-event-source@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fetch-event-source/-/fetch-event-source-2.0.1.tgz#9ceecc94b49fbaa15666e38ae8587f64acce007d"
+  integrity sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==
+
 "@napi-rs/wasm-runtime@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-1.0.7.tgz#dcfea99a75f06209a235f3d941e3460a51e9b14c"
@@ -606,6 +647,11 @@
   version "4.52.5"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.52.5.tgz#8a102869c88f3780c7d5e6776afd3f19084ecd7f"
   integrity sha512-takF3CR71mCAGA+v794QUZ0b6ZSrgJkArC+gUiG6LB6TQty9T0Mqh3m2ImRBOxS2IeYBo4lKWIieSvnEk2OQWA==
+
+"@rollup/rollup-darwin-arm64@^4.18.1":
+  version "4.53.2"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.53.2.tgz#d59bf9ed582b38838e86a17f91720c17db6575b9"
+  integrity sha512-A6s4gJpomNBtJ2yioj8bflM2oogDwzUiMl2yNJ2v9E7++sHrSrsQ29fOfn5DM/iCzpWcebNYEdXpaK4tr2RhfQ==
 
 "@rollup/rollup-darwin-x64@4.52.5":
   version "4.52.5"
@@ -822,6 +868,14 @@
     fractional-indexing "^3.2.0"
     sorted-btree "^1.8.1"
 
+"@tanstack/db-ivm@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/db-ivm/-/db-ivm-0.1.13.tgz#d374e8112b81aac496758ad6d1084400cd3c96dc"
+  integrity sha512-sBOWGY4tqMEym2ewjdWrDb5c5c8akvgnEbGVPAtkfFS3QVV0zfVb5RJAkAc8GSxb3ByVfYjyaShVr0kMJhMuow==
+  dependencies:
+    fractional-indexing "^3.2.0"
+    sorted-btree "^1.8.1"
+
 "@tanstack/db@0.4.20":
   version "0.4.20"
   resolved "https://registry.yarnpkg.com/@tanstack/db/-/db-0.4.20.tgz#e2f8a004ba4df59f6efd402036fb07c60a8b9c41"
@@ -830,6 +884,26 @@
     "@standard-schema/spec" "^1.0.0"
     "@tanstack/db-ivm" "0.1.12"
     "@tanstack/pacer" "^0.1.0"
+
+"@tanstack/db@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/db/-/db-0.5.0.tgz#c3eec14242a546db2a1a6bcfcd52f580b0ad887e"
+  integrity sha512-3AA8xiNhezH18TZ0Dq8FrakAVsRnidTVIRus2vGjFiiVLOmJFiogIVRB16xChAcF4hws12juRl5om8YKK042Hg==
+  dependencies:
+    "@standard-schema/spec" "^1.0.0"
+    "@tanstack/db-ivm" "0.1.13"
+    "@tanstack/pacer" "^0.1.0"
+
+"@tanstack/electric-db-collection@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/electric-db-collection/-/electric-db-collection-0.2.0.tgz#c14e892651614c8601c9fa10e7855bb4d1bee066"
+  integrity sha512-AQYhVfT2nUVlXxCSR3EdMEF0dP03GQfA94JSUsCkNTqBYy3vJDF5Vg+R6NuFKKX6bkntEcTD8hwDIdXZZ+6Rjw==
+  dependencies:
+    "@electric-sql/client" "^1.1.0"
+    "@standard-schema/spec" "^1.0.0"
+    "@tanstack/db" "0.5.0"
+    "@tanstack/store" "^0.8.0"
+    debug "^4.4.3"
 
 "@tanstack/match-sorter-utils@^8.19.4":
   version "8.19.4"
@@ -859,6 +933,11 @@
   integrity sha512-v1GSFHHLRL9pOsuknfFIxdlDgO04ax0uVSITf+paPiGLfve1hcAGtxXYFbtBRlxXBKe9UMwI+rDEr6uAxcMiSg==
   dependencies:
     "@standard-schema/spec" "^1.0.0"
+
+"@tanstack/store@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/store/-/store-0.8.0.tgz#f1c533b9cff000fc792ed77edda178000abc9442"
+  integrity sha512-Om+BO0YfMZe//X2z0uLF2j+75nQga6TpTJgLJQBiq85aOyZNIhkCgleNcud2KQg4k4v9Y9l+Uhru3qWMPGTOzQ==
 
 "@tanstack/vue-db@^0.0.75":
   version "0.0.75"
@@ -1416,7 +1495,7 @@ csstype@^3.1.3:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
-debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.0, debug@^4.4.1:
+debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.0, debug@^4.4.1, debug@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.3.tgz#c6ae432d9bd9662582fce08709b038c58e9e3d6a"
   integrity sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==

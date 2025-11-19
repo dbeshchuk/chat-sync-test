@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { useUsersStore } from '@/stores/users'
 import InternetIndicator from './InternetIndicator.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useLiveQuery } from '@electric-sql/pglite-vue'
 
 const store = useUsersStore()
 
 const name = ref('')
+
+const filter = ref('')
+
+const dbUsers = useLiveQuery(`SELECT * from users`) //WHERE name LIKE $1;, //[filter.value ? `%${filter.value}%` : '%'])
+
+const users: any = computed(() => dbUsers?.rows ?? [])
 
 const add = () => {
   if (name.value.trim()) {
@@ -23,15 +30,15 @@ const add = () => {
       <InternetIndicator />
     </div>
 
+    <input v-model="filter" placeholder="Filter" class="border p-3 w-full mb-4 rounded" />
 
-    <input v-model="store.filter" placeholder="Filter" class="border p-3 w-full mb-4 rounded" />
+    <ul v-if="users.value && users.value?.length > 0" class="space-y-3 mb-6">
+      <li v-for="user in users.value" :key="5">
+        <div v-if="user.name.includes(filter)" class="p-4 border rounded bg-gray-50">
+          <div class="font-medium">{{ user.name }}</div>
+          <div class="text-xs text-gray-500 font-mono">{{ user.pub_key }}</div>
+        </div>
 
-    <div v-if="store.isLoading" class="text-gray-500">Loading...</div>
-
-    <ul class="space-y-3 mb-6">
-      <li v-for="user in store.users" :key="user.pub_key" class="p-4 border rounded bg-gray-50">
-        <div class="font-medium">{{ user.name }}</div>
-        <div class="text-xs text-gray-500 font-mono">{{ user.pub_key }}</div>
       </li>
     </ul>
 

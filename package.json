@@ -16,9 +16,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@electric-sql/client": "^1.1.4",
+    "@electric-sql/pglite": "^0.3.14",
+    "@electric-sql/pglite-sync": "^0.4.0",
+    "@electric-sql/pglite-vue": "^0.2.32",
     "@noble/hashes": "^2.0.1",
     "@noble/secp256k1": "^3.0.0",
     "@tailwindcss/vite": "^4.1.17",
+    "@tanstack/electric-db-collection": "^0.2.0",
     "@tanstack/query-core": "^5.90.8",
     "@tanstack/query-db-collection": "^0.3.0",
     "@tanstack/vue-db": "^0.0.75",

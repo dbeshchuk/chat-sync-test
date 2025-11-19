@@ -13,4 +13,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  optimizeDeps: {
+    exclude: ['@electric-sql/pglite'],
+  },
+  server: {
+    proxy: {
+      '/shapes': 'http://buckitup.xyz:4403/shapes',
+      '/ingest': 'http://buckitup.xyz:4403/ingest',
+    },
+  },
 })
