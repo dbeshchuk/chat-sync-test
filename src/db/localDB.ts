@@ -22,7 +22,7 @@ class LocalDB {
 
   async init() {
     this.db = new PGliteWorker(
-      new Worker(new URL('./pglite-worker.js', import.meta.url), {
+      new Worker(new URL('./pglite-worker.js?worker', import.meta.url), {
         type: 'module',
       }),
       {

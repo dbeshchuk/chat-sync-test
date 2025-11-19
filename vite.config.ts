@@ -22,4 +22,7 @@ export default defineConfig({
       '/ingest': 'http://buckitup.xyz:4403/ingest',
     },
   },
+  worker: {
+    format: 'es',
+  },
 })
