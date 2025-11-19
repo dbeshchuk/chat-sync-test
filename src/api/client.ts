@@ -10,7 +10,7 @@ export const api = {
   },
 
   ingest: (mutations: any[]) => {
-    return fetch(`${API_BASE}/ingest/mutations`, {
+    return fetch(`/api/ingest/mutations`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mutations }),

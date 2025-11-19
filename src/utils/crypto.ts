@@ -5,5 +5,5 @@ export const generatePubKey = async (): Promise<string> => {
   const secretKey = secp.utils.randomSecretKey()
   const pubKey33b = secp.getPublicKey(secretKey)
 
-  return '0x' + bytesToHex(pubKey33b)
+  return '\\x' + bytesToHex(pubKey33b)
 }

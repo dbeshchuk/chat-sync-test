@@ -10,7 +10,7 @@ const name = ref('')
 
 const filter = ref('')
 
-const dbUsers = useLiveQuery(`SELECT * from users`) //WHERE name LIKE $1;, //[filter.value ? `%${filter.value}%` : '%'])
+const dbUsers = useLiveQuery(`SELECT * from users ORDER BY name ASC;`) //WHERE name LIKE $1;, //[filter.value ? `%${filter.value}%` : '%'])
 
 const users: any = computed(() => dbUsers?.rows ?? [])
 

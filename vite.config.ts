@@ -18,10 +18,15 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/shapes': 'http://buckitup.xyz:4403/shapes',
-      '/ingest': 'http://buckitup.xyz:4403/ingest',
+      '/api': {
+        target: 'http://buckitup.xyz:4403',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+      },
     },
   },
+
   worker: {
     format: 'es',
   },
