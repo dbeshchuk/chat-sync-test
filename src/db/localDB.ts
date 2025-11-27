@@ -77,7 +77,6 @@ class LocalDB {
       table: 'users_synced',
       primaryKey: ['pub_key'],
       shapeKey: 'pub_key',
-      liveSse: true,
       onError: (error: any) => {
         console.error('Shape sync error', error)
 

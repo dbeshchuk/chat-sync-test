@@ -11,6 +11,10 @@ CREATE TABLE IF NOT EXISTS users_local (
   operation TEXT CHECK(operation IN ('insert', 'delete'))
 );
 
+UPDATE users_local
+SET pub_key = '\x' || substring(pub_key FROM 3)
+WHERE pub_key LIKE '0x%';
+
 CREATE OR REPLACE VIEW users AS
 SELECT 
   COALESCE(l.pub_key, s.pub_key) AS pub_key,
@@ -27,6 +31,7 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE TRIGGER trg_sync_delete_local
 AFTER INSERT OR UPDATE ON users_synced
