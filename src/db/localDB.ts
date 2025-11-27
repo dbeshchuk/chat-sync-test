@@ -36,7 +36,9 @@ class LocalDB {
       {
         extensions: {
           live,
-          electric: electricSync(),
+          electric: electricSync({
+            metadataSchema: 'my_sync_metadata',
+          }),
         },
       },
     )
