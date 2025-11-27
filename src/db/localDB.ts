@@ -73,6 +73,7 @@ class LocalDB {
         params: {
           table: 'users',
         },
+        live: true,
       },
       table: 'users_synced',
       primaryKey: ['pub_key'],
