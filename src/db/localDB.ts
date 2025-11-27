@@ -71,7 +71,7 @@ class LocalDB {
 
     this.syncEngine = await this.db.electric.syncShapeToTable({
       shape: {
-        url: new URL('/api/shapes/users', window.location.origin).toString(),
+        url: new URL(`/api/shapes/users?_ver=${Date.now()}`, window.location.origin).toString(),
         params: {
           table: 'users',
         },
