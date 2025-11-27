@@ -5,28 +5,10 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'internet-indicator',
-  data() {
-    return {
-      isOnline: navigator.onLine,
-    };
-  },
-  created() {
-    window.addEventListener('online', this.updateOnlineStatus);
-    window.addEventListener('offline', this.updateOnlineStatus);
-  },
-  beforeDestroy() {
-    window.removeEventListener('online', this.updateOnlineStatus);
-    window.removeEventListener('offline', this.updateOnlineStatus);
-  },
-  methods: {
-    updateOnlineStatus() {
-      this.isOnline = navigator.onLine;
-    },
-  },
-};
+<script setup lang="ts">
+import { useOnlineStatus } from '@/composables/useOnlineStatus';
+
+const { isOnline } = useOnlineStatus()
 </script>
 
 <style scoped>

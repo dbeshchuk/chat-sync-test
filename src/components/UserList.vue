@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useUsersStore } from '@/stores/users'
-import InternetIndicator from './InternetIndicator.vue'
+// import InternetIndicator from './InternetIndicator.vue'
+import SyncStatus from './SyncStatus.vue'
 import { ref, computed } from 'vue'
 import { useLiveQuery } from '@electric-sql/pglite-vue'
 
@@ -12,7 +13,11 @@ const filter = ref('')
 
 const dbUsers = useLiveQuery(`SELECT * from users ORDER BY name ASC;`) //WHERE name LIKE $1;, //[filter.value ? `%${filter.value}%` : '%'])
 
+const dbUsersLocal = useLiveQuery(`SELECT * from users_local;`)
+
 const users: any = computed(() => dbUsers?.rows ?? [])
+
+const usersLocal: any = computed(() => dbUsersLocal?.rows ?? [])
 
 const add = () => {
   if (name.value.trim()) {
@@ -27,7 +32,8 @@ const add = () => {
     <div class="flex align-center mb-6 w-full justify-between">
       <h1 class="text-2xl font-bold ">Local-First Registry</h1>
 
-      <InternetIndicator />
+      <!-- <InternetIndicator /> -->
+      <SyncStatus :isSynced="usersLocal.value && usersLocal.value.length == 0" />
     </div>
 
     <input v-model="filter" placeholder="Filter" class="border p-3 w-full mb-4 rounded" />
@@ -35,7 +41,18 @@ const add = () => {
     <ul v-if="users.value && users.value?.length > 0" class="space-y-3 mb-6">
       <li v-for="user in users.value" :key="5">
         <div v-if="user.name.includes(filter)" class="p-4 border rounded bg-gray-50">
-          <div class="font-medium">{{ user.name }}</div>
+          <div class="font-medium">
+            <span class="text-green-600" v-if="user.synced">
+              &check;
+            </span>
+
+            <span class="text-orange-600" v-if="!user.synced">
+              &#x29D6;
+            </span>
+
+            {{ user.name }}
+          </div>
+
           <div class="text-xs text-gray-500 font-mono">{{ user.pub_key }}</div>
         </div>
 

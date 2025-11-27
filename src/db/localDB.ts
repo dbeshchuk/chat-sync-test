@@ -5,6 +5,7 @@ import schemaSQL from './schema.sql?raw'
 import { api } from '@/api/client'
 import { generatePubKey } from '@/utils/crypto'
 import { PGliteWorker } from '@electric-sql/pglite/worker'
+import { useOnlineStatus } from '@/composables/useOnlineStatus'
 
 export interface User {
   pub_key: string
@@ -15,6 +16,13 @@ class LocalDB {
   private db!: any
   private syncEngine!: any
   private users: any
+  private isOnline: boolean
+  public isLocalStash: boolean
+
+  constructor() {
+    this.isOnline = navigator.onLine
+    this.isLocalStash = false
+  }
 
   get cachedUsers() {
     return this.users ? this.users : []
@@ -37,6 +45,18 @@ class LocalDB {
 
     await this.initSyncEngine()
 
+    const stash = await this.getLocalUsers()
+
+    this.isLocalStash = !!stash?.length
+
+    this.syncEngine.stream.subscribe(() => {
+      if (this.isLocalStash) {
+        console.log('local send')
+
+        setTimeout(this.sendLocalUsers, 3000)
+      }
+    })
+
     return this.db
   }
 
@@ -45,6 +65,8 @@ class LocalDB {
   }
 
   async initSyncEngine() {
+    const { setOffline } = useOnlineStatus()
+
     this.syncEngine = await this.db.electric.syncShapeToTable({
       shape: {
         url: new URL('/api/shapes/users', window.location.origin).toString(),
@@ -55,8 +77,11 @@ class LocalDB {
       table: 'users_synced',
       primaryKey: ['pub_key'],
       shapeKey: 'pub_key',
+      liveSse: true,
       onError: (error: any) => {
         console.error('Shape sync error', error)
+
+        setOffline()
       },
     })
   }
@@ -78,6 +103,8 @@ class LocalDB {
 
     await this.db.query(`INSERT INTO users_local (pub_key, name) VALUES ($1, $2)`, [pub_key, name])
 
+    this.isLocalStash = true
+
     await this.sendLocalUsers()
   }
 
@@ -86,7 +113,11 @@ class LocalDB {
 
     const mutations = await localDB.getLocalUsers()
 
-    if (!mutations.length) return
+    if (!mutations.length) {
+      this.isLocalStash = false
+
+      return
+    }
 
     try {
       await api.ingest(
