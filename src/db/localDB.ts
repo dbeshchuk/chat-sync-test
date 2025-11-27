@@ -73,11 +73,10 @@ class LocalDB {
         params: {
           table: 'users',
         },
-        live: true,
       },
       table: 'users_synced',
       primaryKey: ['pub_key'],
-      shapeKey: 'pub_key',
+      shapeKey: null, //'pub_key',
       onError: (error: any) => {
         console.error('Shape sync error', error)
 
